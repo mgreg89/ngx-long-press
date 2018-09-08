@@ -56,4 +56,14 @@ export class LongPressDirective {
     public onMouseDown(event: MouseEvent): void {
         this.mousedowns$.next(event);
     }
+
+    @HostListener('touchend', ['$event'])
+    public onTouchEnd(event: TouchEvent): void {
+      this.mouseups$.next(event);
+    }
+  
+    @HostListener('touchstart', ['$event'])
+    public onTouchStart(event: TouchEvent): void {
+      this.mousedowns$.next(event);
+    }
 }
