@@ -1,7 +1,7 @@
 import { Directive, EventEmitter, HostListener, Input, Output } from '@angular/core';
 
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
+import { Observable, Subject, interval } from 'rxjs';
+import { map, takeUntil, filter, switchAll, combineLatest, repeat } from 'rxjs/operators';
 
 import 'rxjs/add/observable/interval';
 import 'rxjs/add/operator/takeUntil';
@@ -23,17 +23,14 @@ export class LongPressDirective {
     public destroys$ = new Subject();
 
     public ngOnInit(): void {
-        const interval$ = this.interval$()
-            .takeUntil(this.mouseups$)
-            .combineLatest(this.mouseups$);
+        const interval$ = this.interval$().pipe(takeUntil(this.mouseups$)).pipe(combineLatest(this.mouseups$));
 
         this.mousedowns$
-            .asObservable()
-            .map(() => interval$)
-            .switch()
-            .repeat()
-            .map(items => items[1])
-            .takeUntil(this.destroys$)
+            .asObservable().pipe(map(() => interval$))
+            .pipe(switchAll())
+            .pipe(repeat())
+            .pipe(map(items => items[1]))
+            .pipe(takeUntil(this.destroys$))
             .subscribe((event: MouseEvent) => {
                 this.onRelease.emit(event);
             });
@@ -45,10 +42,9 @@ export class LongPressDirective {
     }
 
     public interval$(): Observable<number> {
-        return Observable
-            .interval()
-            .map(i => i * 10)
-            .filter(i => i > this.longPress);
+        return interval()
+            .pipe(map(i => i * 10))
+            .pipe(filter(i => i > this.longPress));
     }
 
     @HostListener('mouseup', ['$event'])

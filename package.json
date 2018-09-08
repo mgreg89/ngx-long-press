@@ -1,9 +1,8 @@
 {
   "name": "ngx-long-press",
   "version": "0.0.1",
-  "description": "Long Press directive for Angular",
+  "description": "Long Press directive for Angular 6",
   "scripts": {
-    "prepublish": "npm run clean && npm run build",
     "build": "webpack && npm run tsc && npm run ngc && npm run moveassets",
     "watch": "webpack -- --watch",
     "server": "webpack-dev-server --config webpack.demo.js --inline --colors --progress --port 3015 --content-base demo",
@@ -18,21 +17,21 @@
     "clean:generated": "find src \\( -name '*.js' -o -name '*.d.ts' -o -name '*.js.map' -o -name '*.metadata.json'  \\) -type f -delete"
   },
   "author": {
-    "name": "Giancarlo Buomprisco",
-    "email": "giancarlopsk@gmail.com"
+    "name": "Carles Garcia Bercial",
+    "email": "asdeoz@gmail.com"
   },
   "contributors": [],
   "license": "MIT",
   "devDependencies": {
-    "@angular/animations": "^4.3.0",
-    "@angular/common": "^4.3.0",
-    "@angular/compiler": "^4.3.0",
-    "@angular/compiler-cli": "^4.3.0",
-    "@angular/core": "^4.3.0",
-    "@angular/forms": "^4.3.0",
-    "@angular/http": "^4.3.0",
-    "@angular/platform-browser": "^4.3.0",
-    "@angular/platform-browser-dynamic": "^4.3.0",
+    "@angular/animations": "^6.1.7",
+    "@angular/common": "^6.1.7",
+    "@angular/compiler": "^6.1.7",
+    "@angular/compiler-cli": "^6.1.7",
+    "@angular/core": "^6.1.7",
+    "@angular/forms": "^6.1.7",
+    "@angular/http": "^6.1.7",
+    "@angular/platform-browser": "^6.1.7",
+    "@angular/platform-browser-dynamic": "^6.1.7",
     "@types/es6-shim": "^0.31.32",
     "@types/jasmine": "^2.5.41",
     "@types/node": "^7.0.3",
@@ -60,7 +59,7 @@
     "precss": "^1.4.0",
     "raw-loader": "^0.5.1",
     "reflect-metadata": "0.1.10",
-    "rxjs": "5.3.1",
+    "rxjs": "^6.3.2",
     "sass-loader": "^6.0.1",
     "source-map-loader": "^0.2.0",
     "style-loader": "^0.17.0",
@@ -68,18 +67,15 @@
     "ts-helpers": "1.1.2",
     "ts-node": "^3.0.2",
     "tslint": "^5.2.0",
-    "typescript": "2.3.2",
+    "typescript": "2.9.2",
     "universal-style-loader": "^0.16.3",
     "url-loader": "^0.5.7",
     "webpack": "^2.3.0",
     "webpack-dev-server": "https://registry.npmjs.org/webpack-dev-server/-/webpack-dev-server-2.4.2.tgz",
     "webpack-merge": "^4.1.0",
-    "zone.js": "0.8.10"
+    "zone.js": "0.8.26"
   },
-  "peerDependencies": {
-    "@angular/core": "^4.3.0",
-    "rxjs": "^5.0.1"
-  },
+  "peerDependencies": {},
   "keywords": [
     "long press directive",
     "long press event",
@@ -87,12 +83,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Gbuomprisco/ngx-long-press"
+    "url": "https://github.com/asdeoz/ngx-long-press"
   },
   "bugs": {
-    "url": "https://github.com/Gbuomprisco/ngx-long-press/issues"
+    "url": "https://github.com/asdeoz/ngx-long-press/issues"
   },
-  "homepage": "https://github.com/Gbuomprisco/ngx-long-press",
+  "homepage": "https://github.com/asdeoz/ngx-long-press",
   "main": "./dist/ngx-long-press.bundle.js",
   "files": [
     "dist",
@@ -100,5 +96,9 @@
     "tsconfig.json",
     "tsconfig.aot.json",
     "README.md"
-  ]
+  ],
+  "dependencies": {
+    "@angular/cli": "^6.2.1",
+    "rxjs-compat": "^6.3.2"
+  }
 }

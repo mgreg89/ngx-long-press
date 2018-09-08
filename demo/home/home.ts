@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 
 @Component({
     selector: 'app',
@@ -13,5 +12,9 @@ export class Home {
 
     public onVeryLongPress() {
         alert("You long-pressed for 2 seconds!");
+    }
+
+    public onLongPressDiv(){
+        alert("You long-pressed a div!");
     }
 }

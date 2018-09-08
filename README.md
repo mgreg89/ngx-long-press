@@ -1,4 +1,4 @@
-# ngx-long-press - "Long Press" directive for Angular
+# ngx-long-press - "Long Press" directive for Angular 6
 
 This directive allows to add a custom "long press" event that fires after an element has been pressed for a certain amount of time.
 
