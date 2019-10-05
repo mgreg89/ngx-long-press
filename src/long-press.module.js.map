@@ -1,0 +1,1 @@
+{"version":3,"file":"long-press.module.js","sourceRoot":"","sources":["long-press.module.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAE,MAAM,eAAe,CAAC;AACzC,OAAO,EAAE,kBAAkB,EAAE,MAAM,wBAAwB,CAAC;AAE5D;IAAA;IAI8B,CAAC;;gBAJ9B,QAAQ,SAAC;oBACR,YAAY,EAAE,CAAE,kBAAkB,CAAE;oBACpC,OAAO,EAAE,CAAE,kBAAkB,CAAE;iBAChC;;IAC6B,sBAAC;CAAA,AAJ/B,IAI+B;SAAlB,eAAe"}
