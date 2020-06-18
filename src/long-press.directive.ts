@@ -46,6 +46,12 @@ export class LongPressDirective {
             .pipe(map(i => i * 10))
             .pipe(filter(i => i > this.longPress));
     }
+	
+	// @HostListener('scroll', ['$event']) // for scroll events of the current element
+	@HostListener('window:scroll', ['$event']) // for window scroll events
+	onScroll(event) {
+	  this.destroys$.next();
+	}
 
     @HostListener('mouseup', ['$event'])
     public onMouseUp(event: MouseEvent): void {

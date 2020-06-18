@@ -48,6 +48,9 @@ var LongPressDirective = (function () {
             .pipe(map(function (i) { return i * 10; }))
             .pipe(filter(function (i) { return i > _this.longPress; }));
     };
+    LongPressDirective.prototype.onScroll = function (event) {
+        this.destroys$.next();
+    };
     LongPressDirective.prototype.onMouseUp = function (event) {
         this.mouseups$.next(event);
     };
@@ -68,6 +71,12 @@ var LongPressDirective = (function () {
         Output(),
         __metadata("design:type", EventEmitter)
     ], LongPressDirective.prototype, "onRelease", void 0);
+    __decorate([
+        HostListener('window:scroll', ['$event']),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", void 0)
+    ], LongPressDirective.prototype, "onScroll", null);
     __decorate([
         HostListener('mouseup', ['$event']),
         __metadata("design:type", Function),
