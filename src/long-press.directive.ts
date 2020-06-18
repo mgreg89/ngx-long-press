@@ -66,6 +66,8 @@ export class LongPressDirective {
 			if((this.touchstartCoordX - event.changedTouches[0].clientX) * 2 <= this.validDelta * 2
 			&& (this.touchstartCoordY - event.changedTouches[0].clientY) * 2 <= this.validDelta * 2){
 				this.mouseups$.next(event);
+			} else {
+				this.destroys$.next();
 			}
 		}
     }

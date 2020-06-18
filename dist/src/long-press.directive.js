@@ -61,6 +61,9 @@ var LongPressDirective = (function () {
                 && (this.touchstartCoordY - event.changedTouches[0].clientY) * 2 <= this.validDelta * 2) {
                 this.mouseups$.next(event);
             }
+            else {
+                this.destroys$.next();
+            }
         }
     };
     LongPressDirective.prototype.onTouchStart = function (event) {
