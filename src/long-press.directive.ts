@@ -21,6 +21,9 @@ export class LongPressDirective {
     public mouseups$ = new Subject();
     public mousedowns$ = new Subject();
     public destroys$ = new Subject();
+	private touchstartCoordX;
+	private touchstartCoordY;
+	private validDelta = 10;
 
     public ngOnInit(): void {
         const interval$ = this.interval$().pipe(takeUntil(this.mouseups$)).pipe(combineLatest(this.mouseups$));
@@ -46,12 +49,6 @@ export class LongPressDirective {
             .pipe(map(i => i * 10))
             .pipe(filter(i => i > this.longPress));
     }
-	
-	// @HostListener('scroll', ['$event']) // for scroll events of the current element
-	@HostListener('window:scroll', ['$event']) // for window scroll events
-	onScroll(event) {
-	  this.destroys$.next();
-	}
 
     @HostListener('mouseup', ['$event'])
     public onMouseUp(event: MouseEvent): void {
@@ -65,11 +62,20 @@ export class LongPressDirective {
 
     @HostListener('touchend', ['$event'])
     public onTouchEnd(event: TouchEvent): void {
-      this.mouseups$.next(event);
+		if(this.touchstartCoordX && this.touchstartCoordY && event && event.changedTouches && event.changedTouches[0]){
+			if((this.touchstartCoordX - event.changedTouches[0].clientX) * 2 <= this.validDelta * 2
+			&& (this.touchstartCoordY - event.changedTouches[0].clientY) * 2 <= this.validDelta * 2){
+				this.mouseups$.next(event);
+			}
+		}
     }
   
     @HostListener('touchstart', ['$event'])
     public onTouchStart(event: TouchEvent): void {
-      this.mousedowns$.next(event);
+		if (event && event.touches && event.touches[0]){
+			this.touchstartCoordX = event.touches[0].clientX;
+			this.touchstartCoordY = event.touches[0].clientY;
+			this.mousedowns$.next(event);
+		}
     }
 }

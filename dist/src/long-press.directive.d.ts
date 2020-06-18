@@ -13,10 +13,12 @@ export declare class LongPressDirective {
     mouseups$: Subject<{}>;
     mousedowns$: Subject<{}>;
     destroys$: Subject<{}>;
+    private touchstartCoordX;
+    private touchstartCoordY;
+    private validDelta;
     ngOnInit(): void;
     ngOnDestroy(): void;
     interval$(): Observable<number>;
-    onScroll(event: any): void;
     onMouseUp(event: MouseEvent): void;
     onMouseDown(event: MouseEvent): void;
     onTouchEnd(event: TouchEvent): void;

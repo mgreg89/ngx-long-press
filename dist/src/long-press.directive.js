@@ -24,6 +24,7 @@ var LongPressDirective = (function () {
         this.mouseups$ = new Subject();
         this.mousedowns$ = new Subject();
         this.destroys$ = new Subject();
+        this.validDelta = 10;
     }
     LongPressDirective.prototype.ngOnInit = function () {
         var _this = this;
@@ -48,9 +49,6 @@ var LongPressDirective = (function () {
             .pipe(map(function (i) { return i * 10; }))
             .pipe(filter(function (i) { return i > _this.longPress; }));
     };
-    LongPressDirective.prototype.onScroll = function (event) {
-        this.destroys$.next();
-    };
     LongPressDirective.prototype.onMouseUp = function (event) {
         this.mouseups$.next(event);
     };
@@ -58,10 +56,19 @@ var LongPressDirective = (function () {
         this.mousedowns$.next(event);
     };
     LongPressDirective.prototype.onTouchEnd = function (event) {
-        this.mouseups$.next(event);
+        if (this.touchstartCoordX && this.touchstartCoordY && event && event.changedTouches && event.changedTouches[0]) {
+            if ((this.touchstartCoordX - event.changedTouches[0].clientX) * 2 <= this.validDelta * 2
+                && (this.touchstartCoordY - event.changedTouches[0].clientY) * 2 <= this.validDelta * 2) {
+                this.mouseups$.next(event);
+            }
+        }
     };
     LongPressDirective.prototype.onTouchStart = function (event) {
-        this.mousedowns$.next(event);
+        if (event && event.touches && event.touches[0]) {
+            this.touchstartCoordX = event.touches[0].clientX;
+            this.touchstartCoordY = event.touches[0].clientY;
+            this.mousedowns$.next(event);
+        }
     };
     __decorate([
         Input(),
@@ -71,12 +78,6 @@ var LongPressDirective = (function () {
         Output(),
         __metadata("design:type", EventEmitter)
     ], LongPressDirective.prototype, "onRelease", void 0);
-    __decorate([
-        HostListener('window:scroll', ['$event']),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Object]),
-        __metadata("design:returntype", void 0)
-    ], LongPressDirective.prototype, "onScroll", null);
     __decorate([
         HostListener('mouseup', ['$event']),
         __metadata("design:type", Function),
