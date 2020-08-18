@@ -37,6 +37,7 @@ var LongPressDirective = (function () {
             .pipe(takeUntil(this.destroys$))
             .subscribe(function (event) {
             _this.onRelease.emit(event);
+            event.preventDefault();
         });
     };
     LongPressDirective.prototype.ngOnDestroy = function () {

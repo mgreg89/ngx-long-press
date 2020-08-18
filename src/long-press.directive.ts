@@ -36,6 +36,7 @@ export class LongPressDirective {
             .pipe(takeUntil(this.destroys$))
             .subscribe((event: MouseEvent) => {
                 this.onRelease.emit(event);
+				event.preventDefault();
             });
     }
 
