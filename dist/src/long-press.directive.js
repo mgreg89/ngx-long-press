@@ -97,13 +97,13 @@ var LongPressDirective = (function () {
     __decorate([
         HostListener('touchend', ['$event']),
         __metadata("design:type", Function),
-        __metadata("design:paramtypes", [TouchEvent]),
+        __metadata("design:paramtypes", [Object]),
         __metadata("design:returntype", void 0)
     ], LongPressDirective.prototype, "onTouchEnd", null);
     __decorate([
         HostListener('touchstart', ['$event']),
         __metadata("design:type", Function),
-        __metadata("design:paramtypes", [TouchEvent]),
+        __metadata("design:paramtypes", [Object]),
         __metadata("design:returntype", void 0)
     ], LongPressDirective.prototype, "onTouchStart", null);
     LongPressDirective = __decorate([

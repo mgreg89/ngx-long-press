@@ -62,7 +62,7 @@ export class LongPressDirective {
     }
 
     @HostListener('touchend', ['$event'])
-    public onTouchEnd(event: TouchEvent): void {
+    public onTouchEnd(event): void {
 		if(this.touchstartCoordX && this.touchstartCoordY && event && event.changedTouches && event.changedTouches[0]){
 			if(Math.abs(this.touchstartCoordX - event.changedTouches[0].clientX) <= this.validDelta
 			&& Math.abs(this.touchstartCoordY - event.changedTouches[0].clientY) <= this.validDelta){
@@ -74,7 +74,7 @@ export class LongPressDirective {
     }
   
     @HostListener('touchstart', ['$event'])
-    public onTouchStart(event: TouchEvent): void {
+    public onTouchStart(event): void {
 		if (event && event.touches && event.touches[0]){
 			this.touchstartCoordX = event.touches[0].clientX;
 			this.touchstartCoordY = event.touches[0].clientY;

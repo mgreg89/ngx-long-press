@@ -21,6 +21,6 @@ export declare class LongPressDirective {
     interval$(): Observable<number>;
     onMouseUp(event: MouseEvent): void;
     onMouseDown(event: MouseEvent): void;
-    onTouchEnd(event: TouchEvent): void;
-    onTouchStart(event: TouchEvent): void;
+    onTouchEnd(event: any): void;
+    onTouchStart(event: any): void;
 }
