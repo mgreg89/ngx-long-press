@@ -24,6 +24,7 @@
   "license": "MIT",
   "devDependencies": {
     "@angular/animations": "^6.1.7",
+	"@angular/cli": "^6.2.1",
     "@angular/common": "^6.1.7",
     "@angular/compiler": "^6.1.7",
     "@angular/compiler-cli": "^6.1.7",
@@ -97,8 +98,7 @@
     "tsconfig.aot.json",
     "README.md"
   ],
-  "dependencies": {
-    "@angular/cli": "^6.2.1",
+  "dependencies": {    
     "rxjs-compat": "^6.3.2"
   }
 }
